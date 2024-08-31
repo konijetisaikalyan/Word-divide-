@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+void divideWords(char* input) {
+    char word[256];
+    int i, j = 0;
+
+    for (i = 0; i <= strlen(input); i++) {
+        if (input[i] == ' ' || input[i] == '\n' || input[i] == ',' || input[i] == '.'||input[i]==','||input[i]==':') {
+            word[j] = '\0';   
+            if (j > 0) {
+                printf("\"%s\", ", word); 
+                j = 0;
+            }
+        } else {
+            word[j++] = input[i];
+        }
+    }
+}
+
+int main() {
+    char input[256];
+
+    printf("Enter a sentence: ");
+    fgets(input, sizeof(input), stdin);
+
+    divideWords(input);
+
+    return 0;
+}
